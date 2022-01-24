@@ -8,7 +8,7 @@ const init = async () => {
   });
 
   await server.start();
-  console.log('Server running on port 3000');
+  console.log(`Server running on port ${config.server.port}`);
 };
 
 export { init, };
