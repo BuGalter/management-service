@@ -6,7 +6,7 @@ export const schemaUser = Joi.object({
     .max(30)
     .required(),
 
-  mail: Joi.string()
+  email: Joi.string()
     .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'], }, })
     .required(),
 
@@ -21,6 +21,6 @@ export const schemaUser = Joi.object({
   birth: Joi.date()
     .required(),
 
-  sex: Joi.date()
+  sex: Joi.string()
     .required(),
 });
