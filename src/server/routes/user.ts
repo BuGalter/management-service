@@ -1,6 +1,6 @@
 import { ok, } from 'assert';
 import { User, } from '../models/User';
-import { userReg, } from '../api/user';
+import { userAuth, userReg, } from '../api/user';
 
 export default [
   {
@@ -17,5 +17,10 @@ export default [
     method: 'POST',
     path: '/user/reg',
     handler: userReg,
+  },
+  {
+    method: 'POST',
+    path: '/user/auth',
+    handler: userAuth,
   }
 ];
