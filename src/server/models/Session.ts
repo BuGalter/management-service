@@ -1,9 +1,10 @@
 import {
-  BelongsTo, Column, DataType, ForeignKey, Model,
+  BelongsTo, Column, DataType, ForeignKey, Model, Table,
 } from 'sequelize-typescript';
 import { v4 as uuidv4, } from 'uuid';
 import { User, } from './User';
 
+@Table
 export class Session extends Model {
   @Column({
     primaryKey: true,
