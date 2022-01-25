@@ -1,5 +1,6 @@
 import { ok, } from 'assert';
 import { User, } from '../models/User';
+import { userReg, } from '../api/user';
 
 export default [
   {
@@ -9,7 +10,12 @@ export default [
 
       const users = await User.findAll();
       console.log(users);
-      return {status : ok, message: users};
+      return { status: ok, message: users, };
     },
+  },
+  {
+    method: 'POST',
+    path: '/user/reg',
+    handler: userReg,
   }
 ];
