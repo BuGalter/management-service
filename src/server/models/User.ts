@@ -1,39 +1,49 @@
 import {
-  Column, DataType, Model, Scopes, Table, HasOne,
+  Column, DataType, HasMany, Model, Table,
 } from 'sequelize-typescript';
-import * as bcrypt from 'bcrypt';
 import { v4 as uuidv4, } from 'uuid';
+import * as bcrypt from 'bcrypt';
+import { Session, } from './Session';
 
-@Scopes(() => ({
-  defaultScope: {
-    attributes: {
-      exclude: ['password'],
-    },
-  },
-  withPassword: {
-    attributes: {
-      include: ['password'],
-    },
-  },
-}))
 @Table
 export class User extends Model {
-  @Column({ primaryKey: true, type: DataType.STRING, defaultValue: () => uuidv4(), }) id: string;
+  @Column({
+    primaryKey: true,
+    type: DataType.STRING,
+    defaultValue: () => uuidv4(),
+  })
+  id: string;
+
+  @HasMany(() => Session)
+  session: Session[];
+
+  @Column({})
+  name: string;
+
+  @Column({})
+  email: string;
 
   @Column({
     type: DataType.STRING,
     set(value: string) {
       const salt = bcrypt.genSaltSync(10);
       const hash = bcrypt.hashSync(value, salt);
-      // @ts-ignore
       this.setDataValue('password', hash);
     },
     get() {
-      // @ts-ignore
       return this.getDataValue('password');
     },
   })
   password: string;
+
+  @Column({})
+  phone: string;
+
+  @Column({})
+  birth: Date;
+
+  @Column({})
+  sex: string;
 
   async passwordCompare(pwd: string) {
     return bcrypt.compareSync(pwd, this.password);
