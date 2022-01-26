@@ -1,7 +1,7 @@
 import * as Hapi from '@hapi/hapi';
 import * as Inert from '@hapi/inert';
 import * as AuthBearer from 'hapi-auth-bearer-token';
-import config from './config';
+import config from './config/config';
 import sequelize from './models';
 import routes from './routes';
 import { validateSession, } from './utils/validate';

@@ -1,5 +1,5 @@
 import * as jwt from 'jsonwebtoken';
-import config from '../config';
+import config from '../config/config';
 
 export async function createTokensJWT(sessionId: string, userId: string) {
   /**
