@@ -1,29 +1,16 @@
 import { User, } from '../models/User';
 import { Session, } from '../models/Session';
-import { validatePayloadReg, validatePayloadAuth, } from '../utils/validate';
 import { generateJwt, } from '../utils/auth';
 import { output, error, } from '../utils';
 
 export async function userReg(r) {
-  const { ...payload } = r.payload;
-  const data = await validatePayloadReg(payload);
-  if (typeof (data) === 'string') {
-    return error(404000, data, null);
-  }
-
-  const newUser = await User.create(data);
+  const newUser = await User.create(r.payload);
   return output({ message: `${newUser.name} added!`, });
 }
 
 export async function userAuth(r) {
-  const { ...payload } = r.payload;
-  const data = await validatePayloadAuth(payload);
-  if (typeof (data) === 'string') {
-    return error(404000, data, null);
-  }
-
   const user = await User.findOne({
-    where: { name: data.name, },
+    where: { name: r.payload.name, },
   });
   if (user === null) {
     return error(404000, 'User not found!', null);
