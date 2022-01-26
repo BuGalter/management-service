@@ -1,3 +1,5 @@
+import * as Joi from 'joi';
+import { schemaUser, schemaAuth, } from '../schemes';
 import { userAuth, userReg, } from '../api/user';
 
 export default [
@@ -5,6 +7,9 @@ export default [
     method: 'POST',
     path: '/user/reg',
     options: {
+      validate: {
+        payload: schemaUser,
+      },
       auth: false,
     },
     handler: userReg,
@@ -13,6 +18,9 @@ export default [
     method: 'POST',
     path: '/user/auth',
     options: {
+      validate: {
+        payload: schemaAuth,
+      },
       auth: false,
     },
     handler: userAuth,
