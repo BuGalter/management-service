@@ -1,8 +1,8 @@
 import {
   Column, DataType, HasMany, Model, Table,
 } from 'sequelize-typescript';
-import { v4 as uuidv4, } from 'uuid';
 import * as bcrypt from 'bcrypt';
+import { getUUID, } from '../utils/index';
 import { Session, } from './Session';
 
 @Table
@@ -10,7 +10,7 @@ export class User extends Model {
   @Column({
     primaryKey: true,
     type: DataType.STRING,
-    defaultValue: () => uuidv4(),
+    defaultValue: () => getUUID(),
   })
   id: string;
 
