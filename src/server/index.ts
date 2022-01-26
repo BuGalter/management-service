@@ -1,6 +1,6 @@
 import * as Hapi from '@hapi/hapi';
 import * as Inert from '@hapi/inert';
-import config from './config';
+import config from './config/config';
 import sequelize from './models';
 import routes from './routes';
 
