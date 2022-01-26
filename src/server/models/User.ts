@@ -45,7 +45,7 @@ export class User extends Model {
   @Column({})
   sex: string;
 
-  async passwordCompare(pwd: string): Promise<boolean> {
+  async passwordCompare(pwd: string) {
     return bcrypt.compareSync(pwd, this.password);
   }
 }
