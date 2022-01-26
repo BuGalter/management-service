@@ -16,9 +16,9 @@ const init = async () => {
 
   await server.register([Inert, AuthBearer]);
 
-  server.auth.strategy('simple', 'bearer-access-token', { validate: validateSession, });
+  server.auth.strategy('jwt', 'bearer-access-token', { validate: validateSession, });
 
-  server.auth.default('simple');
+  server.auth.default('jwt');
 
   server.route(routes);
 
