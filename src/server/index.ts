@@ -4,7 +4,7 @@ import * as AuthBearer from 'hapi-auth-bearer-token';
 import config from './config/config';
 import sequelize from './models';
 import routes from './routes';
-import { validateSession, } from './utils/validate';
+import { tokenValidate, } from './utils/auth';
 
 const init = async () => {
   const server = Hapi.server({
@@ -16,9 +16,14 @@ const init = async () => {
 
   await server.register([Inert, AuthBearer]);
 
-  server.auth.strategy('jwt', 'bearer-access-token', { validate: validateSession, });
+  server.auth.strategy('jwt-access', 'bearer-access-token', {
+    validate: tokenValidate('access'),
+  });
+  server.auth.strategy('jwt-refresh', 'bearer-access-token', {
+    validate: tokenValidate('refresh'),
+  });
 
-  server.auth.default('jwt');
+  server.auth.default('jwt-access');
 
   server.route(routes);
 
