@@ -17,10 +17,14 @@ export class User extends Model {
   @HasMany(() => Session)
   session: Session[];
 
-  @Column({})
+  @Column({
+    unique: true,
+  })
   name: string;
 
-  @Column({})
+  @Column({
+    unique: true,
+  })
   email: string;
 
   @Column({
@@ -36,7 +40,9 @@ export class User extends Model {
   })
   password: string;
 
-  @Column({})
+  @Column({
+    unique: true,
+  })
   phone: string;
 
   @Column({})
