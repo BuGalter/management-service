@@ -4,20 +4,25 @@ import { generateJwt, } from '../utils/auth';
 import { output, error, } from '../utils';
 
 export async function userReg(r) {
-  const newUser = await User.create(r.payload);
-  return output({ message: `${newUser.name} added!`, });
+  try {
+    const newUser = await User.build(r.payload);
+    await newUser.save();
+    return output({ message: `${newUser.name} added!`, });
+  }
+  catch (err) {
+    return error(400000, `Error: ${err.errors[0].message}!`, null);
+  }
 }
 
 export async function userAuth(r) {
   const user = await User.findOne({
     where: { name: r.payload.name, },
   });
-  if (user === null) {
+  if (!user) {
     return error(404000, 'User not found!', null);
   }
 
   const newSession = await Session.create({ userId: user.id, });
-  const dataSession = { sessionId: newSession.id, userId: newSession.userId, };
-  const tokens = await generateJwt(dataSession);
+  const tokens = await generateJwt({ sessionId: newSession.id, userId: newSession.userId, });
   return output({ message: tokens.access, });
 }
