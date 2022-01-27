@@ -23,6 +23,6 @@ export default [
       },
       auth: false,
     },
-    handler: userAuth,
-  }
+    handler: userReg,
+  },
 ];
