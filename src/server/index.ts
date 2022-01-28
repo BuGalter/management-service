@@ -1,10 +1,9 @@
 import * as Hapi from '@hapi/hapi';
 import * as Inert from '@hapi/inert';
-import * as AuthBearer from 'hapi-auth-bearer-token';
 import config from './config/config';
 import sequelize from './models';
 import routes from './routes';
-import { tokenValidate, } from './utils/auth';
+import { validateSession, } from './utils/auth';
 
 const init = async () => {
   const server = Hapi.server({
@@ -14,13 +13,16 @@ const init = async () => {
 
   server.realm.modifiers.route.prefix = '/api';
 
-  await server.register([Inert, AuthBearer]);
+  await server.register([Inert, require('hapi-auth-jwt2')]);
 
-  server.auth.strategy('jwt-access', 'bearer-access-token', {
-    validate: tokenValidate('access'),
+  server.auth.strategy('jwt-access', 'jwt', {
+    key: config.token.access.secret,
+    validate: validateSession('access'),
   });
-  server.auth.strategy('jwt-refresh', 'bearer-access-token', {
-    validate: tokenValidate('refresh'),
+
+  server.auth.strategy('jwt-refresh', 'jwt', {
+    key: config.token.refresh.secret,
+    validate: validateSession('refresh'),
   });
 
   server.auth.default('jwt-access');
