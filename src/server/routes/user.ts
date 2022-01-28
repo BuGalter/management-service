@@ -1,4 +1,3 @@
-import * as Joi from 'joi';
 import { schemaUser, schemaAuth, } from '../schemes';
 import { userAuth, userReg, } from '../api/user';
 
