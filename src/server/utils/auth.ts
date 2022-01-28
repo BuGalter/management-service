@@ -5,6 +5,7 @@ import { Session, } from '../models/Session';
 import { Errors, } from './errors';
 
 export const generateJwt = (data: object) => {
+  console.log(data);
   const access = jwt.sign(data, config.token.access.secret,
     { expiresIn: config.token.access.lifeTime, });
 
@@ -14,25 +15,10 @@ export const generateJwt = (data: object) => {
   return { access, refresh, };
 };
 
-export const decodeJwt = async (token: string, secret: string) => {
-  try {
-    return await jwt.verify(token, secret);
-  }
-  catch (e) {
-    const code = e.name === 'TokenExpiredError' ? Errors.TokenExpired : Errors.TokenInvalid;
-    const msg = e.name === 'TokenExpiredError' ? 'Token expired' : 'Token invalid';
-    throw error(code, msg, {});
-  }
-};
+export function validateSession(tokenType: 'access' | 'refresh') {
+  return async function (decoded, r, h) {
 
-export type validateFunc = (r, token: string) => Promise<any>;
-
-// Fabric which returns token validate function depending on token type
-export function tokenValidate(tokenType: 'access' | 'refresh'): validateFunc {
-  return async function (r, token: string) {
-    const data = await decodeJwt(token, config.token[tokenType].secret);
-
-    const session = await Session.findByPk(data.sessionId);
+    const session = await Session.findByPk(decoded.sessionId);
 
     if (session) {
       return { isValid: true, credentials: {}, artifacts: { }, };
