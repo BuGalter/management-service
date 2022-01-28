@@ -4,6 +4,8 @@ import {
 import * as bcrypt from 'bcrypt';
 import { getUUID, } from '../utils/index';
 import { Session, } from './Session';
+import { Student, } from './Student';
+import { Teacher, } from './Teacher';
 
 @Table
 export class User extends Model {
@@ -16,6 +18,12 @@ export class User extends Model {
 
   @HasMany(() => Session)
   session: Session[];
+
+  @HasMany(() => Student)
+  student: Student[];
+
+  @HasMany(() => Teacher)
+  teacher: Teacher[];
 
   @Column({})
   name: string;
