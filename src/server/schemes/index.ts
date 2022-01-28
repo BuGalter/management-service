@@ -44,7 +44,7 @@ export const schemaStudent = Joi.object({
   faculty: Joi.string()
     .required(),
 
-  university: Joi.string()
+  universityId: Joi.string()
     .required(),
 
   group: Joi.number()
@@ -58,6 +58,6 @@ export const schemaTeacher = Joi.object({
   faculty: Joi.string()
     .required(),
 
-  university: Joi.string()
+  universityId: Joi.string()
     .required(),
 });
