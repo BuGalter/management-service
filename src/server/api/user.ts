@@ -4,14 +4,16 @@ import { generateJwt, } from '../utils/auth';
 import { output, error, } from '../utils';
 
 export async function userReg(r) {
-  try {
-    const newUser = await User.build(r.payload);
-    await newUser.save();
-    return output({ message: `${newUser.name} added!`, });
+  const { name, } = r.payload;
+  const newUser = await User.findOne({
+    where: { name, },
+  });
+  if (!newUser) {
+    await User.create(r.payload);
+    return output({ message: `User ${name} added!`, });
   }
-  catch (err) {
-    return error(400000, `Error: ${err.errors[0].message}!`, null);
-  }
+
+  return error(400000, `User ${name} already exists!`, null);
 }
 
 export async function userAuth(r) {
