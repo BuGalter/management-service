@@ -22,6 +22,10 @@ export async function userAuth(r) {
     return error(404000, 'User not found!', null);
   }
 
+  if (!await user.passwordCompare(r.payload.password)) {
+    return error(404000, 'Wrong password!', null);
+  }
+
   const newSession = await Session.create({ userId: user.id, });
   const tokens = await generateJwt({ sessionId: newSession.id, userId: newSession.userId, });
   return output({ message: tokens.access, });
