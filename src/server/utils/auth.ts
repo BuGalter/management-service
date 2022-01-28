@@ -5,7 +5,6 @@ import { Session, } from '../models/Session';
 import { Errors, } from './errors';
 
 export const generateJwt = (data: object) => {
-  console.log(data);
   const access = jwt.sign(data, config.token.access.secret,
     { expiresIn: config.token.access.lifeTime, });
 
