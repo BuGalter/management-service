@@ -4,7 +4,7 @@ import { studentReg, teacherReg, } from '../api/profile';
 export default [
   {
     method: 'POST',
-    path: '/profile/regstudent',
+    path: '/profile/student/reg',
     options: {
       validate: {
         payload: schemaStudent,
@@ -14,7 +14,7 @@ export default [
   },
   {
     method: 'POST',
-    path: '/profile/regteacher',
+    path: '/profile/teacher/reg',
     options: {
       validate: {
         payload: schemaTeacher,
