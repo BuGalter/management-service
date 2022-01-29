@@ -45,3 +45,21 @@ export async function teacherReg(r) {
 
   return error(400000, `Teacher already exists!`, null);
 }
+
+export async function profileChangeInfo(r) {
+  const { data, } = r.payload;
+
+  const student = await Student.findByPk(r.params.profileId);
+  if (student) {
+    await student.update(data);
+    return output({ message: `Student profile info  update!`, });
+  }
+
+  const teacher = await Teacher.findByPk(r.params.profileId);
+  if (teacher) {
+    await student.update(data);
+    return output({ message: `Teacher profile info  update!`, });
+  }
+
+  return error(404000, `Profile not found!`, null);
+}
