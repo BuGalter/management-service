@@ -42,3 +42,39 @@ export async function gradeChange(r) {
 
   return error(400000, `This teacher can't change grade!`, null);
 }
+
+async function getAvarageGradeStudent(studentId) {
+  const gradesCount = await Grade.count({
+    where: {
+      studentId,
+    },
+  });
+  const gradesSum = await Grade.sum('grade', {
+    where: {
+      studentId,
+    },
+  });
+
+  return (gradesSum / gradesCount);
+}
+
+export async function studentAverageGrade(r) {
+  if (r.params.teacherId) {
+    const teacher = await Teacher.findByPk(r.params.teacherId);
+    if (!teacher) {
+      return error(404000, `Teacher not found!`, null);
+    }
+
+    const student = await Student.findByPk(r.params.studentId);
+    if (student.faculty !== teacher.faculty
+      || student.universityId !== teacher.universityId) {
+      return error(400000, `This teacher can't watch grades!`, null);
+    }
+
+    const avarageGrade = await getAvarageGradeStudent(r.params.studentId);
+    return output({ avarageGrade, });
+  }
+
+  const avarageGrade = await getAvarageGradeStudent(r.params.studentId);
+  return output({ avarageGrade, });
+}
