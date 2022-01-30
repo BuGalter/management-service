@@ -39,7 +39,7 @@ export async function teacherReg(r) {
     where: { userId, universityId, },
   });
   if (!teacher) {
-    const newTeacher = await Teacher.create({ userId, faculty, universityId, group, });
+    const newTeacher = await Teacher.create({ userId, faculty, universityId, });
     return output({ message: `Student ${newTeacher.id} added!`, });
   }
 
