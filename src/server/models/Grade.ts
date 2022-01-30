@@ -16,7 +16,7 @@ export class Grade extends Model {
 
   @ForeignKey(() => Student)
   @Column({ })
-  userId: string;
+  studentId: string;
 
   @BelongsTo(() => Student)
   student: Student;
