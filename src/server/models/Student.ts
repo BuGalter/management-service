@@ -1,9 +1,10 @@
 import {
-  Column, DataType, Model, Table, ForeignKey,
+  Column, DataType, Model, Table, ForeignKey, HasMany,
 } from 'sequelize-typescript';
 import { getUUID, } from '../utils/index';
 import { User, } from './User';
 import { University, } from './University';
+import { Grade, } from './Grade';
 
 @Table
 export class Student extends Model {
@@ -13,6 +14,9 @@ export class Student extends Model {
     defaultValue: () => getUUID(),
   })
   id: string;
+
+  @HasMany(() => Grade)
+  grade: Grade[];
 
   @ForeignKey(() => User)
   @Column({ })

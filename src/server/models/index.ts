@@ -4,11 +4,13 @@ import { User, } from './User';
 import { Session, } from './Session';
 import { Student, } from './Student';
 import { Teacher, } from './Teacher';
+import { Grade, } from './Grade';
+import { University, } from './University';
 
 const sequelize = new Sequelize(config.db.dbName, config.db.userName, config.db.password, {
   host: config.db.dbHost,
   dialect: 'postgres',
-  models: [User, Session, Student, Teacher, ],
+  models: [User, Session, Student, Teacher, Grade, University],
 });
 
 sequelize.sync({ force: true, });
