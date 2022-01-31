@@ -94,13 +94,14 @@ async function getFacultyAvaregeGrade(teacherId) {
 }
 
 export async function facultyAverageGrade(r) {
-  const { faculty, universityId, teacherId, } = r.params;
+  const { faculty, universityId, } = r.params;
+  const userId = r.auth.credentials.id;
   const teacher = await Teacher.findOne({
     where: {
-      id: teacherId,
+      userId,
       faculty,
       universityId,
-    },
+    }
   });
   if (!teacher) {
     return error(404000, `Faculty grades for teacher not found!`, null);

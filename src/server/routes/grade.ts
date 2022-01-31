@@ -31,7 +31,7 @@ export default [
   },
   {
     method: 'GET',
-    path: '/grade/faculty/{faculty}&{universityId}&{teacherId}',
+    path: '/grade/faculty/{faculty}&{universityId}',
     handler: facultyAverageGrade,
   }
 ];
