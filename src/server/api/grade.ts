@@ -146,3 +146,31 @@ export async function groupAverageGrade(r) {
   const result = sumGroup / students.length;
   return output({ avarageGradeGroup: result, }); 
 }
+
+export async function lessonAverageGrade(r) {
+  const lesson = r.params.lesson;
+  const userId = r.auth.credentials.id;
+  const student = await Student.findOne({
+    where: {
+      userId,
+    }
+  });
+  if (!student) {
+    return error(404000, `Student grades lesson - ${lesson} not found!`, null);
+  }
+  const grades = await Grade.findAll({
+    where: {
+      studentId: student.id,
+      lesson,
+    }
+  });
+  if (grades.length === 0) {
+    return error(404000, `Lesson grades not found!`, null);   
+  }
+  let sumGrades = 0;
+  for (let i = 0;  i < grades.length; i += 1) {
+    sumGrades += grades[i].grade;
+  }
+  let result = sumGrades / grades.length;
+  return output({ avarageLessonGrade: result, }); 
+}
