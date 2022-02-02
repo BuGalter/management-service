@@ -1,0 +1,853 @@
+{
+	"info": {
+		"_postman_id": "c2d0ef61-98a8-4ab6-80e2-49e3d5684390",
+		"name": "test-api-postman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:3000/api/user/reg",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "test4",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "mail@mail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "89004567800",
+							"type": "text"
+						},
+						{
+							"key": "birth",
+							"value": "12.01.1980",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "male",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/api/user/reg",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"reg"
+					],
+					"query": [
+						{
+							"key": "name=test1&email=mail@mail.com&password=1223&phone=89004567800&birth=12.01.1980&sex=male",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/api/user/auth",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "test2",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/api/user/auth",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/api/profile/student/reg",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiIwNjE3NDBiNy01MDE5LTQ2NTEtYWU1My1lOTc5MzMxMTkxYzgiLCJ1c2VySWQiOiI5NWE3ZGExMC1mMDgwLTRlM2ItYjcyZS0zZjI3NmNkMDI1ODQiLCJpYXQiOjE2NDM4MDkxMzQsImV4cCI6MTY0MzgxMDAzNH0.NOch7Mn9mktFGtEMxflH2HV6TkI1icq_8GoMwcCIPfo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "userId",
+							"value": "6c8d75b2-ce92-4a2e-ac61-bf2aac1cfe6e",
+							"type": "text"
+						},
+						{
+							"key": "faculty",
+							"value": "IBM",
+							"type": "text"
+						},
+						{
+							"key": "universityId",
+							"value": "LETI",
+							"type": "text"
+						},
+						{
+							"key": "group",
+							"value": "7342",
+							"type": "text"
+						},
+						{
+							"key": "birth",
+							"value": "12.01.1980",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "sex",
+							"value": "male",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/api/profile/student/reg",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"profile",
+						"student",
+						"reg"
+					],
+					"query": [
+						{
+							"key": "name=test1&email=mail@mail.com&password=1223&phone=89004567800&birth=12.01.1980&sex=male",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/api/profile/teacher/reg",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiJhNDBiY2VmOC0yYjhhLTRmMDctODQzZi1hNmQ2NmQ1NmUzODMiLCJ1c2VySWQiOiI5NWE3ZGExMC1mMDgwLTRlM2ItYjcyZS0zZjI3NmNkMDI1ODQiLCJpYXQiOjE2NDM4MTAwNzgsImV4cCI6MTY0MzgxMDk3OH0.vSAITJZkAGW4XohGVYRlS3I7BoMC2mFPVZmRJkW_eZ8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "userId",
+							"value": "95a7da10-f080-4e3b-b72e-3f276cd02584",
+							"type": "text"
+						},
+						{
+							"key": "faculty",
+							"value": "IBM",
+							"type": "text"
+						},
+						{
+							"key": "universityId",
+							"value": "LETI",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/api/profile/teacher/reg",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"profile",
+						"teacher",
+						"reg"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/api/grade/create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiI2MTU1MTgwOC05ZjkwLTRiZmItOTk3Mi0yZDEyNzkwMTZiZjkiLCJ1c2VySWQiOiI5NWE3ZGExMC1mMDgwLTRlM2ItYjcyZS0zZjI3NmNkMDI1ODQiLCJpYXQiOjE2NDM4MTAzMzUsImV4cCI6MTY0MzgxMTIzNX0.EzdQzdQT-RZR5X-mI5EnAuAnpl9tKYt1KflNEaJof5Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "studentId",
+							"value": "c9f0a6bc-6ecb-4e9c-a8af-259bf2f9709d",
+							"type": "text"
+						},
+						{
+							"key": "teacherId",
+							"value": "961a8ed9-84e2-4f8d-be59-1928b26b4c36",
+							"type": "text"
+						},
+						{
+							"key": "grade",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "lesson",
+							"value": "test1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/api/grade/create",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"grade",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/api/user/6c8d75b2-ce92-4a2e-ac61-bf2aac1cfe6e",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiI2MTU1MTgwOC05ZjkwLTRiZmItOTk3Mi0yZDEyNzkwMTZiZjkiLCJ1c2VySWQiOiI5NWE3ZGExMC1mMDgwLTRlM2ItYjcyZS0zZjI3NmNkMDI1ODQiLCJpYXQiOjE2NDM4MTAzMzUsImV4cCI6MTY0MzgxMTIzNX0.EzdQzdQT-RZR5X-mI5EnAuAnpl9tKYt1KflNEaJof5Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "test3",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "sex",
+							"value": "female",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/api/user/6c8d75b2-ce92-4a2e-ac61-bf2aac1cfe6e",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"6c8d75b2-ce92-4a2e-ac61-bf2aac1cfe6e"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "77e842dd-3d2c-4934-b565-95861cdca828",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/api/profile/c9f0a6bc-6ecb-4e9c-a8af-259bf2f9709d",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiI5ZWIwNDZkZi01MzZiLTQ5MzgtOWIwZC02NDU2NmVlNWQ3NjMiLCJ1c2VySWQiOiI5NWE3ZGExMC1mMDgwLTRlM2ItYjcyZS0zZjI3NmNkMDI1ODQiLCJpYXQiOjE2NDM4MTA4ODYsImV4cCI6MTY0MzgxMTc4Nn0.DwZBuk20BpGnaQl8xt2Z2PVzAteUoTYGbBLo5cC1ZRs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "faculty",
+							"value": "IBM",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/api/profile/c9f0a6bc-6ecb-4e9c-a8af-259bf2f9709d",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"profile",
+						"c9f0a6bc-6ecb-4e9c-a8af-259bf2f9709d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/api/grade/be5b9c8c-3030-46ca-8dec-c1b20c4a373e",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiIzMmJmZGE1Ni03YjJmLTRhOGMtYWViYi1iMmU1MjI4NDJiMGMiLCJ1c2VySWQiOiI5NWE3ZGExMC1mMDgwLTRlM2ItYjcyZS0zZjI3NmNkMDI1ODQiLCJpYXQiOjE2NDM4MTEzNjMsImV4cCI6MTY0MzgxMjI2M30.jufzIG1s-xMJQGoLQlzzix9rnsTeK3rYYs2tA05iMgY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "teacherId",
+							"value": "961a8ed9-84e2-4f8d-be59-1928b26b4c36",
+							"type": "text"
+						},
+						{
+							"key": "grade",
+							"value": "4",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/api/grade/be5b9c8c-3030-46ca-8dec-c1b20c4a373e",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"grade",
+						"be5b9c8c-3030-46ca-8dec-c1b20c4a373e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/api/grade/student/c9f0a6bc-6ecb-4e9c-a8af-259bf2f9709d&",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiJkN2E1YjQ2YS0wOWQxLTQ1OWMtODhlMy1kNzkyYWI0YjA2MjciLCJ1c2VySWQiOiJmMWU5N2U1Zi0wODM5LTRlNDEtYmRkMC0wOTJlNWZjN2JhN2EiLCJpYXQiOjE2NDM4MTIwMjAsImV4cCI6MTY0MzgxMjkyMH0.tJ4zHSO07mCkW3C98qOKi_TkNcK9sMN4ftm2Rg51Yhg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/grade/student/c9f0a6bc-6ecb-4e9c-a8af-259bf2f9709d&961a8ed9-84e2-4f8d-be59-1928b26b4c36",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"grade",
+						"student",
+						"c9f0a6bc-6ecb-4e9c-a8af-259bf2f9709d&961a8ed9-84e2-4f8d-be59-1928b26b4c36"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "localhost:3000/api/grade/student/c9f0a6bc-6ecb-4e9c-a8af-259bf2f9709d&",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/grade/student/c9f0a6bc-6ecb-4e9c-a8af-259bf2f9709d&",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"grade",
+								"student",
+								"c9f0a6bc-6ecb-4e9c-a8af-259bf2f9709d&"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "cache-control",
+							"value": "no-cache"
+						},
+						{
+							"key": "content-length",
+							"value": "41"
+						},
+						{
+							"key": "accept-ranges",
+							"value": "bytes"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Feb 2022 14:28:18 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ok\": true,\n    \"result\": {\n        \"avarageGrade\": 4.5\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "localhost:3000/api/grade/student/c9f0a6bc-6ecb-4e9c-a8af-259bf2f9709d&961a8ed9-84e2-4f8d-be59-1928b26b4c36",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiJkN2E1YjQ2YS0wOWQxLTQ1OWMtODhlMy1kNzkyYWI0YjA2MjciLCJ1c2VySWQiOiJmMWU5N2U1Zi0wODM5LTRlNDEtYmRkMC0wOTJlNWZjN2JhN2EiLCJpYXQiOjE2NDM4MTIwMjAsImV4cCI6MTY0MzgxMjkyMH0.tJ4zHSO07mCkW3C98qOKi_TkNcK9sMN4ftm2Rg51Yhg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/grade/student/c9f0a6bc-6ecb-4e9c-a8af-259bf2f9709d&961a8ed9-84e2-4f8d-be59-1928b26b4c36",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"grade",
+						"student",
+						"c9f0a6bc-6ecb-4e9c-a8af-259bf2f9709d&961a8ed9-84e2-4f8d-be59-1928b26b4c36"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/api/grade/group/7342&IBM&LETI",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiJkN2E1YjQ2YS0wOWQxLTQ1OWMtODhlMy1kNzkyYWI0YjA2MjciLCJ1c2VySWQiOiJmMWU5N2U1Zi0wODM5LTRlNDEtYmRkMC0wOTJlNWZjN2JhN2EiLCJpYXQiOjE2NDM4MTIwMjAsImV4cCI6MTY0MzgxMjkyMH0.tJ4zHSO07mCkW3C98qOKi_TkNcK9sMN4ftm2Rg51Yhg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/grade/group/7342&IBM&LETI",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"grade",
+						"group",
+						"7342&IBM&LETI"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/api/grade/faculty/IBM&LETI",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiI4MzQxNWJkZC1iMzZmLTQ1ZTktOTE1Zi1iM2JiMjg2ZGRjMjIiLCJ1c2VySWQiOiJmMWU5N2U1Zi0wODM5LTRlNDEtYmRkMC0wOTJlNWZjN2JhN2EiLCJpYXQiOjE2NDM4MTI2MDMsImV4cCI6MTY0MzgxMzUwM30.0mJDlYFglmXym7Wl1Xfea1bMv210BhIP3aTfEjLmlso",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/grade/faculty/IBM&LETI",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"grade",
+						"faculty",
+						"IBM&LETI"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/api/grade/lesson/avarage/student/test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiI4YjgxN2YwNi02N2FiLTRlZmUtYjNiNi1kYzZjNGY0NjQ5YTAiLCJ1c2VySWQiOiJmZGNlYzU4My1jZjUzLTQ1YTAtYmVkMy1kODNhNTBkZGNlZTciLCJpYXQiOjE2NDM4MTI2ODAsImV4cCI6MTY0MzgxMzU4MH0.myBACHg2I_ZStjjIKYCefRp1b6mtG1gS_iSUVrJ5ZyM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/grade/lesson/avarage/student/test",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"grade",
+						"lesson",
+						"avarage",
+						"student",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/api/grade/lesson/student/test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiI4YjgxN2YwNi02N2FiLTRlZmUtYjNiNi1kYzZjNGY0NjQ5YTAiLCJ1c2VySWQiOiJmZGNlYzU4My1jZjUzLTQ1YTAtYmVkMy1kODNhNTBkZGNlZTciLCJpYXQiOjE2NDM4MTI2ODAsImV4cCI6MTY0MzgxMzU4MH0.myBACHg2I_ZStjjIKYCefRp1b6mtG1gS_iSUVrJ5ZyM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/grade/lesson/student/test",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"grade",
+						"lesson",
+						"student",
+						"test"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
