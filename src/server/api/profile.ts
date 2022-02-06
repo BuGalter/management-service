@@ -57,7 +57,7 @@ export async function profileChangeInfo(r) {
 
   const teacher = await Teacher.findByPk(r.params.profileId);
   if (teacher) {
-    await student.update(data);
+    await teacher.update(data);
     return output({ message: `Teacher profile info  update!`, });
   }
 
