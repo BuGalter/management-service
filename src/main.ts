@@ -1,7 +1,7 @@
-import * as main from './server';
+import { start, } from './server/index';
 
 try {
-  main.init();
+  start();
 }
 catch (e) {
   console.error(e);
