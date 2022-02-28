@@ -99,3 +99,11 @@ export const shemaGrade = Joi.object({
   lesson: Joi.string()
     .required(),
 });
+
+export const schemaChangeGrade = Joi.object({
+  teacherId: Joi.string()
+    .required(),
+
+  grade: Joi.string()
+    .required(),
+});

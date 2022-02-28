@@ -26,3 +26,19 @@ export async function gradeCreate(r) {
 
   return error(400000, `This teacher can't grade!`, null);
 }
+
+export async function gradeChange(r) {
+  const { teacherId, grade, } = r.payload;
+  const prevGrade = await Grade.findByPk(r.params.gradeId);
+  if (!prevGrade) {
+    return error(404000, `Grade not found!`, null);
+  }
+
+  if (prevGrade.teacherId === teacherId) {
+    await prevGrade.update({ grade, });
+    const newGrade = await Grade.findByPk(r.params.gradeId);
+    return output({ message: `Grade update!`, newGrade, });
+  }
+
+  return error(400000, `This teacher can't change grade!`, null);
+}
