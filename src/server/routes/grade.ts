@@ -1,4 +1,4 @@
-import { gradeCreate, gradeChange, } from '../api/grade';
+import { gradeCreate, gradeChange, studentAverageGrade, } from '../api/grade';
 import { schemaChangeGrade, shemaGrade, } from '../schemes';
 
 export default [
@@ -21,5 +21,10 @@ export default [
       },
     },
     handler: gradeChange,
+  },
+  {
+    method: 'GET',
+    path: '/grade/student/{studentId}&{teacherId?}',
+    handler: studentAverageGrade,
   }
 ];
