@@ -1,5 +1,5 @@
-import { schemaUser, schemaAuth, } from '../schemes';
-import { userAuth, userReg, } from '../api/user';
+import { schemaUser, schemaAuth, schemaUserChangeInfo, } from '../schemes';
+import { userAuth, userReg, userChangeInfo, } from '../api/user';
 
 export default [
   {
@@ -23,5 +23,15 @@ export default [
       auth: false,
     },
     handler: userAuth,
+  },
+  {
+    method: 'PATCH',
+    path: '/user/{userId}',
+    options: {
+      validate: {
+        payload: schemaUserChangeInfo,
+      },
+    },
+    handler: userChangeInfo,
   }
 ];

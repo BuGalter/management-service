@@ -61,3 +61,19 @@ export const schemaTeacher = Joi.object({
   universityId: Joi.string()
     .required(),
 });
+
+export const schemaUserChangeInfo = Joi.object({
+  name: Joi.string()
+    .min(3)
+    .max(30),
+
+  password: Joi.string()
+    .min(3)
+    .max(30),
+
+  phone: Joi.string(),
+
+  birth: Joi.date(),
+
+  sex: Joi.string(),
+});
