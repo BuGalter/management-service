@@ -174,3 +174,30 @@ export async function lessonAverageGrade(r) {
   let result = sumGrades / grades.length;
   return output({ avarageLessonGrade: result, }); 
 }
+
+export async function lessonGrades(r) {
+  const lesson = r.params.lesson;
+  const userId = r.auth.credentials.id;
+  const student = await Student.findOne({
+    where: {
+      userId,
+    }
+  });
+  if (!student) {
+    return error(404000, `Student grades lesson - ${lesson} not found!`, null);
+  }
+  const grades = await Grade.findAll({
+    where: {
+      studentId: student.id,
+      lesson,
+    }
+  });
+  if (grades.length === 0) {
+    return error(404000, `Lesson grades not found!`, null);   
+  }
+  let result = [];
+  for (let i = 0;  i < grades.length; i += 1) {
+    result.push(grades[i].grade);
+  }
+  return output({ lesson: `${lesson}`, Grades: result.join(', '), }); 
+}

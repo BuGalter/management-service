@@ -1,6 +1,6 @@
 import {
   gradeCreate, gradeChange, studentAverageGrade, facultyAverageGrade, groupAverageGrade,
-  lessonAverageGrade,
+  lessonAverageGrade, lessonGrades,
 } from '../api/grade';
 import { schemaChangeGrade, shemaGrade, } from '../schemes';
 
@@ -44,5 +44,10 @@ export default [
     method: 'GET',
     path: '/grade/lesson/avarage/student/{lesson}',
     handler: lessonAverageGrade,
+  },
+  {
+    method: 'GET',
+    path: '/grade/lesson/student/{lesson}',
+    handler: lessonGrades,
   }
 ]
