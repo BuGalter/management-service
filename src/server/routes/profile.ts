@@ -1,5 +1,5 @@
-import { schemaStudent, schemaTeacher, } from '../schemes';
-import { studentReg, teacherReg, } from '../api/profile';
+import { schemaStudent, schemaTeacher, schemaProfileChangeInfo, } from '../schemes';
+import { studentReg, teacherReg, profileChangeInfo, } from '../api/profile';
 
 export default [
   {
@@ -21,5 +21,15 @@ export default [
       },
     },
     handler: teacherReg,
+  },
+  {
+    method: 'PATCH',
+    path: '/profile/{profileId}',
+    options: {
+      validate: {
+        payload: schemaProfileChangeInfo,
+      },
+    },
+    handler: profileChangeInfo,
   }
 ];

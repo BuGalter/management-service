@@ -77,3 +77,11 @@ export const schemaUserChangeInfo = Joi.object({
 
   sex: Joi.string(),
 });
+
+export const schemaProfileChangeInfo = Joi.object({
+  faculty: Joi.string(),
+
+  universityId: Joi.string(),
+
+  group: Joi.number(),
+});

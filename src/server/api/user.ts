@@ -34,14 +34,12 @@ export async function userAuth(r) {
 }
 
 export async function userChangeInfo(r) {
+  const { data, } = r.payload;
   const user = await User.findByPk(r.params.userId);
   if (!user) {
     return error(404000, 'User not found!', null);
   }
 
-  for (const property in r.payload) {
-    await user.update({ property: r.payload[property], });
-  }
-
+  await user.update(data);
   return output({ message: `User ${user.name} data update!`, });
 }
