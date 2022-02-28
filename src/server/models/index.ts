@@ -13,5 +13,4 @@ const sequelize = new Sequelize(config.db.dbName, config.db.userName, config.db.
   models: [User, Session, Student, Teacher, Grade, University],
 });
 
-sequelize.sync({ force: true, });
 export default sequelize;

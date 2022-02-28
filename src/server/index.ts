@@ -6,7 +6,7 @@ import sequelize from './models';
 import routes from './routes';
 import { tokenValidate, } from './utils/auth';
 
-const init = async () => {
+const createServer = async () => {
   const server = Hapi.server({
     port: config.server.port,
     host: config.server.host,
@@ -27,6 +27,7 @@ const init = async () => {
   server.route(routes);
 
   try {
+    await sequelize.sync();
     await sequelize.authenticate();
     console.log('Connection has been established successfully.');
   }
@@ -34,8 +35,20 @@ const init = async () => {
     console.error('Unable to connect to the database:', error);
   }
 
-  await server.start();
-  console.log(`Server running on port ${config.server.port}`);
+  return server;
 };
 
-export { init, };
+const init = async () => {
+  const server = await createServer();
+  await server.initialize();
+  return server;
+};
+
+const start = async () => {
+  const server = await createServer();
+  await server.start();
+  console.log(`Server running at: ${server.info.uri}`);
+  return server;
+};
+
+export { init, start, };
