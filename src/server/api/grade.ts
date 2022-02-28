@@ -78,3 +78,39 @@ export async function studentAverageGrade(r) {
   const avarageGrade = await getAvarageGradeStudent(r.params.studentId);
   return output({ avarageGrade, });
 }
+
+async function getFacultyAvaregeGrade(teacherId) {
+  const gradesCount = await Grade.count({
+    where: {
+      teacherId,
+    },
+  });
+  const gradesSum = await Grade.sum('grade', {
+    where: {
+      teacherId,
+    },
+  });
+  return gradesSum / gradesCount;
+}
+
+export async function facultyAverageGrade(r) {
+  const { faculty, universityId, } = r.params;
+  const userId = r.auth.credentials.id;
+  const teacher = await Teacher.findOne({
+    where: {
+      userId,
+      faculty,
+      universityId,
+    }
+  });
+  if (!teacher) {
+    return error(404000, `Faculty grades for teacher not found!`, null);
+  }
+
+  const result = await getFacultyAvaregeGrade(teacher.id);
+  if (!result) {
+    return error(404000, `Grades not found!`, null);
+  }
+
+  return output({ avarageGrade: result, });
+}
