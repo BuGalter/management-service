@@ -85,3 +85,17 @@ export const schemaProfileChangeInfo = Joi.object({
 
   group: Joi.number(),
 });
+
+export const shemaGrade = Joi.object({
+  studentId: Joi.string()
+    .required(),
+
+  teacherId: Joi.string()
+    .required(),
+
+  grade: Joi.number()
+    .required(),
+
+  lesson: Joi.string()
+    .required(),
+});
