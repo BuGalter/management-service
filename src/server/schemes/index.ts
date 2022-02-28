@@ -36,3 +36,28 @@ export const schemaAuth = Joi.object({
     .max(30)
     .required(),
 });
+
+export const schemaStudent = Joi.object({
+  userId: Joi.string()
+    .required(),
+
+  faculty: Joi.string()
+    .required(),
+
+  universityId: Joi.string()
+    .required(),
+
+  group: Joi.number()
+    .required(),
+});
+
+export const schemaTeacher = Joi.object({
+  userId: Joi.string()
+    .required(),
+
+  faculty: Joi.string()
+    .required(),
+
+  universityId: Joi.string()
+    .required(),
+});

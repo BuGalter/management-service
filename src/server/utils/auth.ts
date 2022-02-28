@@ -32,12 +32,9 @@ export function tokenValidate(tokenType: 'access' | 'refresh'): validateFunc {
   return async function (r, token: string) {
     const data = await decodeJwt(token, config.auth.jwt[tokenType].secret);
 
-    const { user, } = await Session.findByPk(data.id, {
-      include: [{ model: User, }],
-    });
-
+    const user = await Session.findByPk(data.sessionId);
     if (user) {
-      return { isValid: true, credentials: user, artifacts: { token, type: tokenType, }, };
+      return { isValid: true, credentials: { id: user.userId, }, artifacts: { token, type: tokenType, }, };
     }
 
     throw error(Errors.SessionNotFound, 'User not found', {});
