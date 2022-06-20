@@ -18,7 +18,8 @@ export const generateJwt = (data: object) => {
 export const decodeJwt = async (token: string, secret: string) => {
   try {
     return await jwt.verify(token, secret);
-  } catch (e) {
+  }
+  catch (e) {
     const code = e.name === 'TokenExpiredError' ? Errors.TokenExpired : Errors.TokenInvalid;
     const msg = e.name === 'TokenExpiredError' ? 'Token expired' : 'Token invalid';
     throw error(code, msg, {});

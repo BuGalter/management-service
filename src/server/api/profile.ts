@@ -13,7 +13,9 @@ async function isUser(userId) {
 }
 
 export async function studentReg(r) {
-  const { userId, faculty, universityId, group, } = r.payload;
+  const {
+    userId, faculty, universityId, group,
+  } = r.payload;
   if (!isUser(userId)) {
     return error(404000, `User not found!`, null);
   }
@@ -22,7 +24,9 @@ export async function studentReg(r) {
     where: { userId, universityId, },
   });
   if (!student) {
-    const newStudent = await Student.create({ userId, faculty, universityId, group, });
+    const newStudent = await Student.create({
+      userId, faculty, universityId, group,
+    });
     return output({ message: `Student ${newStudent.id} added!`, });
   }
 

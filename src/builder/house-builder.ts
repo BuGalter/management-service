@@ -35,7 +35,7 @@ class HouseBuilder implements Builder {
 
   public addWalls() {
     this.house.partsHouse.push('Стены');
-  } 
+  }
 
   public addFacade() {
     this.house.partsHouse.push('Фасад');
@@ -59,4 +59,3 @@ house.addWalls();
 house.addFacade();
 house.addRoff();
 house.buildHouse().getHouseParts();
-

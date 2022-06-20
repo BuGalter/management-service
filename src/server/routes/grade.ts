@@ -50,4 +50,4 @@ export default [
     path: '/grade/lesson/student/{lesson}',
     handler: lessonGrades,
   }
-]
+];
